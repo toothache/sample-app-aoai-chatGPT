@@ -510,8 +510,8 @@ def conversation_with_data(request_body):
         return Response(stream_with_data(body, headers, endpoint, history_metadata), mimetype='text/event-stream')
 
 def stream_without_data(response, history_metadata={}):
-    for line in response:
     responseText = ""
+    for line in response:
         if line["choices"]:
             deltaText = line["choices"][0]["delta"].get('content')
         else:
